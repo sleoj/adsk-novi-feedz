@@ -26,16 +26,25 @@ const initialState: State = {
 
 const AppReducer = (state: State = initialState, action: Action) => {
   console.group('Action Received');
-  console.log(`State:`, state);
-  console.log(`Action:`, action);
+  // console.log(`State:`, state);
+  // console.log(`Action:`, action);
+
+  let newState = state;
   switch (action.type) {
     case 'TODO_CLICKED':
-      console.log('WOOOO! I was clicked');
-      return state;
+      newState = JSON.parse(JSON.stringify(state));
+      newState.todos.forEach((item) => {
+        if (item.title === (action as TodoAction).todo.title)
+        {
+          item.completed = ! item.completed;
+        }
+      });
+      break;
     default:
       console.warn('I was not handled 😢');
+      break;
   }
   console.groupEnd();
-  return state;
+  return newState;
 };
 export default AppReducer;

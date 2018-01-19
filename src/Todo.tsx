@@ -20,7 +20,12 @@ export class Todo extends React.PureComponent<Props> {
     this.props.clicked(this.props.todo);
   }
   render() {
-    const { todo: { title } } = this.props;
-    return <li onClick={this.handleClick}>{title}</li>;
+    const { todo: { title, completed } } = this.props;
+    console.log(completed);
+    return (
+      <li className={completed ? 'Finished' : ''} onClick={this.handleClick} >
+        {title} {completed}
+      </li>
+    );
   }
 }
