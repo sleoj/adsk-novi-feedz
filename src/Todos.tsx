@@ -24,7 +24,7 @@ export default class Todos extends React.Component<Props, State> {
     return (
       <div>
         <h2>{this.props.name}</h2>
-        <ul>
+        <ul className="List">
           {this.props.todos.map((todo: TodoProps, idx: number) => (
             <Todo
               key={hash(todo.title)}

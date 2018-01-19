@@ -23,7 +23,7 @@ export class Todo extends React.PureComponent<Props> {
     const { todo: { title, completed } } = this.props;
     console.log(completed);
     return (
-      <li className={completed ? 'Finished' : ''} onClick={this.handleClick} >
+      <li className={'ListItem ' + (completed ? 'Finished' : '')} onClick={this.handleClick} >
         {title} {completed}
       </li>
     );
