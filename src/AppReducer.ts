@@ -7,6 +7,7 @@ export type State = {
 interface TodoAction {
   todo: TodoProps;
   type: string;
+  reason: string;
 }
 interface SearchAction {
   type: string;
@@ -36,7 +37,17 @@ const AppReducer = (state: State = initialState, action: Action) => {
       newState.todos.forEach((item) => {
         if (item.title === (action as TodoAction).todo.title)
         {
-          item.completed = ! item.completed;
+          switch ((action as TodoAction).reason)
+          {
+            case 'complete':
+              item.completed = ! item.completed;
+              break;
+            case 'important':
+              item.important = ! item.important;
+              break;
+            default:
+              break;
+          }
         }
       });
       break;

@@ -29,10 +29,11 @@ export default class Todos extends React.Component<Props, State> {
             <Todo
               key={hash(todo.title)}
               todo={todo}
-              clicked={(t: TodoProps) => {
+              clicked={(t: TodoProps, reason: string) => {
                 this.props.dispatch({
                   todo: t,
-                  type: 'TODO_CLICKED'
+                  type: 'TODO_CLICKED',
+                  reason
                 } as Action);
               }}
             />
